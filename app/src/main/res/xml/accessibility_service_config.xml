@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Config for the TextFlow AccessibilityService.
+
+    Event types:
+      * typeViewTextSelectionChanged — fired when the user selects text in any
+        app; TextFlow uses it to know there is a selection to transform.
+      * typeWindowContentChanged   — fired when window content changes; used to
+        detect the text field / insertion caret when a selection was made and
+        needs to be replaced with the LLM result.
+
+    feedbackGeneric + notificationTimeout: the service produces no audible or
+    haptic feedback of its own; it only observes. canRetrieveWindowContent lets
+    the service read the selected text from the window content.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowContentChanged|typeViewTextSelectionChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagRetrieveInteractiveWindows"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/accessibility_service_description"
+    android:notificationTimeout="100"
+    android:settingsActivity="com.textflow.app.MainActivity" />

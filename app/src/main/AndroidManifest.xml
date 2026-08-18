@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Needed to communicate with the server-side LLM proxy (never holds API keys). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Lets the floating bubble overlay be drawn above other apps. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TextFlow">
+
+        <!-- Main (dev) activity: hosts the command palette / commands / settings UI.
+             Also the entry point that offers the overlay-permission intent. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TextFlow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- AccessibilityService that detects text selection across apps.
+             The service implementation itself is a later task; this declaration
+             and its config XML are the scaffolding required to ship it. -->
+        <service
+            android:name=".service.TextFlowAccessibilityService"
+            android:exported="false"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+    </application>
+
+</manifest>
