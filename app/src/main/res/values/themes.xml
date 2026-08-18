@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark, action-bar-free theme. All real styling happens in Compose
+         (ui/theme), this just prevents a light flash before the first frame. -->
+    <style name="Theme.TextFlow" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#0E0D12</item>
+        <item name="android:statusBarColor">#0E0D12</item>
+        <item name="android:navigationBarColor">#0E0D12</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

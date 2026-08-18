@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TextFlow</string>
+
+    <string name="accessibility_service_label">TextFlow Assistant</string>
+    <string name="accessibility_service_description">TextFlow listens for text selection in other apps so you can transform the selected text with an @command from the floating bubble.</string>
+</resources>
